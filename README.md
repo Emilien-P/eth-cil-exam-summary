@@ -11,4 +11,5 @@ The content of this summary is largely based on [Gregor Wegberg's](https://githu
 It has been adapted to the new lecture content of 2017.
 
 # Download latest PDF
-[Click here](https://latexonline.cc/pending?git=https%3A%2F%2Fgithub.com%2Fplokchen%2Feth-cil-exam-summary&target=main.tex&command=pdflatex&trackId=1504090609447)
+Note: Latexonline compiles it onto 3 pages whereas Overleaf compiles it on two pages. Will investiguate after the exam.
+[Click here](latexonline.cc/compile?git=https%3A%2F%2Fgithub.com%2FEmilien-P%2Feth-cil-exam-summary&target=main.tex)
