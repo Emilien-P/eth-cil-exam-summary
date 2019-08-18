@@ -6,4 +6,6 @@ $= \sum_{n=1}^N \sum_{k=1}^K \mathbf{z}_{k,n} \|\mathbf{x}_n - \mathbf{u}_k\|_2^
 2. \textbf{Assign:} data points to clusters. $k^\star(\mathbf{x}_n) = \argmin_k \{ \|\mathbf{x}_n - \mathbf{u}_k\|_2 \}$ returns cluster $k^\star$, whose centroid $\mathbf{u}_{k^\star}$ is closest to data point $\mathbf{x}_n$. Set $\mathbf{z}_{k^\star,n} = 1$, and for $ l \neq k^\star~ \mathbf{z}_{l,n}=0$.\\
 3. \textbf{Update} centroids: $\mathbf{u}_k = \frac{\sum_{n=1}^N z_{k,n} \mathbf{x}_n}{\sum_{n=1}^N z_{k,n}}$.\\
 4. Repeat from step 2, stops if $\|\mathbf{Z} - \mathbf{Z}^\text{new}\|_0 = \|\mathbf{Z} - \mathbf{Z}^\text{new}\|^2_F = 0$.\\
-Computational cost: $O(k\cdot n \cdot d)$
+One iteration cost: $O(k n d)$, finite convergence from the cyclic argument.
+\subsection*{K-means++}
+incremental $D^2$ sampling, $U_k = \{x_i\}, ~ i \sim Uniform[1:N]$, add points one by one to the clusters $I \sim categorical(\mathbf{p}),~ p_i = D_i^2 / \sum_j D_j^2$

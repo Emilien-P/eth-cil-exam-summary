@@ -11,10 +11,19 @@ $(\mathbf{D}^{-1})_{i,i} = \frac{1}{\mathbf{D}_{i, i}}$ (don't forget to transpo
 3. calculate eigenvectors of $\mathbf{A}^\top \mathbf{A}$ using the eigenvalues resulting in the columns of $\mathbf{V}$.\\
 4. calculate the missing matrix: $\mathbf{U} = \mathbf{A} \mathbf{V} \mathbf{D}^{-1}$.\\
 5. normalize each column of $\mathbf{U}$ and $\mathbf{V}$.
-
+computational cost = $O(mn^2 + m^2n), m\geq n$
 \subsection*{Low-Rank approximation}
 Using only $K$ largest eigenvalues and corresponding eigenvectors. $\tilde{\mathbf{A}}_{i, j} = \sum_{k=1}^K \mathbf{U}_{i, k} \mathbf{D}_{k,k} \mathbf{V}_{j, k} = \sum_{k=1}^K \mathbf{U}_{i, k} \mathbf{D}_{k,k} (\mathbf{V}^\top)_{k, j}$.
 
-\subsection*{Echart-Young Theorem}
+\subsection*{Eckart-Young Theorem}
 $\min_{rank(B)=K} ||A-B||_F^2 = ||A-A_k||_F^2 = \sum_{r=k+1}^{rank(A)} \sigma_r^2$
 $\min_{rank(B)=K} ||A-B||_2 = ||A-A_k||_2 = \sigma_{k+1}$
+
+\subsection*{Linear Auto-encoder}
+By EY, the optimal $C,D$ matrices s.t. $\hat X = DCX$ are $C=AU_k^\top, D=U_kA^{-1}$ with $A$ a rotation matrix $\rightarrow$low interpretability of the latent space and allow weight sharing $C=D^\top$ w/o loss of generality.
+
+\subsection*{SVD Thresholding}
+$\textbf{B}^* = shrink_\tau (\textbf{A}) := \text{argmin}_\textbf{B}\left[\frac{1}{2}\|A-B\|_F^2+\tau \|B\|_*\right]$ \\
+$D_\tau = diag(max(0, \sigma_i - \tau))$ \\
+proj. op: $\Pi(\textbf{X}) = x_{ij}$ if $(i,j) \in I$ else $0$ \\
+$ \textbf{B}_{t+1} = \textbf{B}_t + \eta_t \Pi(A - schrink_\tau (\textbf{B}_t)) $

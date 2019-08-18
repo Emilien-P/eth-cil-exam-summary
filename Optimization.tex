@@ -2,10 +2,10 @@
 \section{Optimization}
 
 \subsection*{Alternating Least Squares}
-$f(U,v_i)=\sum_{(i,j)\in I} (a_{i,j} - \langle u_j, v_i \rangle)^2$\\
-$f(u_i,V)=\sum_{(i,j)\in I} (a_{i,j} - \langle u_j, v_i \rangle)^2$\\
+$f(U,v_i)=\sum_{j:(i,j)\in I} (a_{i,j} - \langle u_j, v_i \rangle)^2$\\
+$f(u_i,V)=\sum_{i:(i,j)\in I} (a_{i,j} - \langle u_j, v_i \rangle)^2$\\
 Least squares problems which are convex.
-
+$\Omega(U, V)=\|u\|^2+\|v\|^2$ (F-norm normalizer)
 
 \subsection*{Coordinate Descent}
 1. init: $\mathbf{x}^{(0)} \in \mathbb{R}^D$\\
@@ -29,11 +29,11 @@ $f(x) = \frac{1}{N}\sum_{n=1}^{N}f_n(x)$\\
 3. sample $n \in_{u.a.r.} \{1, \ldots, N\}$\\
 4. $\mathbf{x}^{(t+1)} = \mathbf{x}^{(t)} - \gamma \nabla f_n(\mathbf{x}^{(t)})$, typically  $\gamma \approx \frac{1}{t}$.
 
-\subsection*{Projected Gradient Descent (Constrained Opt.)}
-minimize $f(x)$, $x \in Q$ (constraint).\\
-\textbf{Project} $x$ onto $Q$: $P_Q(\mathbf{x}) = \argmin_{y \in Q} \|\mathbf{y} - \mathbf{x}\|$,\\
-\textbf{Update}: $\mathbf{x}^{(t+1)} = P_Q[\mathbf{x}^{(t)} - \gamma \nabla f(\mathbf{x}^{(t)})]$,\\
-$\mathbf{x}^{(t+1)}$ is unique if $Q$ convex.
+%\subsection*{Projected Gradient Descent (Constrained Opt.)}
+%minimize $f(x)$, $x \in Q$ (constraint).\\
+%\textbf{Project} $x$ onto $Q$: $P_Q(\mathbf{x}) = \argmin_{y \in Q} %\|\mathbf{y} - \mathbf{x}\|$,\\
+%\textbf{Update}: $\mathbf{x}^{(t+1)} = P_Q[\mathbf{x}^{(t)} - \gamma %\nabla f(\mathbf{x}^{(t)})]$,\\
+%$\mathbf{x}^{(t+1)}$ is unique if $Q$ convex.
 
 \subsection*{Lagrangian Multipliers}
 Minimize  $f(\mathbf{x})$ s.t. $g_i(\mathbf{x}) \leq 0,\ i = 1, .., m$ (\textbf{inequality constr.}) and $h_i(\mathbf{x}) = \mathbf{a}_i^\top \mathbf{x} - b_i = 0,\ i = 1, .., p$ (\textbf{equality constraint})
@@ -44,9 +44,13 @@ Minimize  $f(\mathbf{x})$ s.t. $g_i(\mathbf{x}) \leq 0,\ i = 1, .., m$ (\textbf{
 \end{compactdesc}
 
 \subsection*{Convex Optimization}
-Def.: $\{(x,t)|x \in dom f, f(x) \leq t\}$, $f : \mathbb{R}^D \rightarrow \mathbb{R}$ is convex, if $dom\ f$ is a convex set, and if $\forall \mathbf{x}, \mathbf{y} \in dom\ f$, and for $0 \leq \alpha \leq 1$: $f(\alpha \mathbf{x} + (1 - \alpha)\mathbf{y}) \leq \alpha f(\mathbf{x}) + (1-\alpha)f(\mathbf{y})$. local=global min, \textbf{Convergence}: $f(\mathbf{x}^{(t)}) - f(\mathbf{x}^*) \le \frac{c}{t}$.
-\textbf{Subgradient} $g \in \mathbb{R}^D$ of $f$ at $\mathbf{x}$: $f(\mathbf{y}) \geq f(\mathbf{x}) + g^\top(\mathbf{y}-\mathbf{x}) \ \forall \mathbf{y}$
+Def.: $\{(x,t)|x \in dom f, f(x) \leq t\}$, $f : \mathbb{R}^D \rightarrow \mathbb{R}$ is convex, if $dom\ f$ is a convex set, and if $\forall \mathbf{x}, \mathbf{y} \in dom\ f$, and for $0 \leq \alpha \leq 1$: $f(\alpha \mathbf{x} + (1 - \alpha)\mathbf{y}) \leq \alpha f(\mathbf{x}) + (1-\alpha)f(\mathbf{y})$. local=global min \\
+(Convex. multivariate function) $f(v) \geq f(w) + \langle \nabla f(w), v - w \rangle$
+\textbf{Sylvester's criterion} $H_f$ twice diff. is $psd$ iff. all $n\times{} n$ top-left corner sub-matrices have det $ > 0$. $H_f $ is uniformly $psd$ on $\textbb{D}$ iff $f$ is convex on $\textbb{D}$.
 
 \subsection*{Convex Relaxation}
 Replace non-convex rank constraints by convex norm constraints.\\
-Nuclear norm: $||A||_* = \sum_i \sigma_i$
+Nuclear norm: $||A||_* = \sum_i \sigma_i$ \\
+Exact formulation: min $\|B\|_*$ sub.t. $\|A-B\|_G=0$ \\
+Approx. form: min $\|A - B\|_G$ sub.t. $\|B\|_* \leq r$ \\
+Lower bound: $rank(B) \leq \|B\|_*$ if $\|B\|_2 \leq 1$
