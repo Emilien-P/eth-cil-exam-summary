@@ -46,7 +46,7 @@ Minimize  $f(\mathbf{x})$ s.t. $g_i(\mathbf{x}) \leq 0,\ i = 1, .., m$ (\textbf{
 \subsection*{Convex Optimization}
 Def.: $\{(x,t)|x \in dom f, f(x) \leq t\}$, $f : \mathbb{R}^D \rightarrow \mathbb{R}$ is convex, if $dom\ f$ is a convex set, and if $\forall \mathbf{x}, \mathbf{y} \in dom\ f$, and for $0 \leq \alpha \leq 1$: $f(\alpha \mathbf{x} + (1 - \alpha)\mathbf{y}) \leq \alpha f(\mathbf{x}) + (1-\alpha)f(\mathbf{y})$. local=global min \\
 (Convex. multivariate function) $f(v) \geq f(w) + \langle \nabla f(w), v - w \rangle$
-\textbf{Sylvester's criterion} $H_f$ twice diff. is $psd$ iff. all $n\times{} n$ top-left corner sub-matrices have det $ > 0$. $H_f $ is uniformly $psd$ on $\textbb{D}$ iff $f$ is convex on $\textbb{D}$.
+\textbf{Sylvester's criterion} $H_f$ twice diff. is $psd$ iff. all $n\times{} n$ top-left corner sub-matrices have det $ > 0$. $H_f $ is uniformly $psd$ on $\mathbb{D}$ iff $f$ is convex on $\mathbb{D}$.
 
 \subsection*{Convex Relaxation}
 Replace non-convex rank constraints by convex norm constraints.\\

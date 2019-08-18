@@ -6,7 +6,7 @@ $\nabla_\theta \mathbb{E}_{q_\phi}[log p_\theta (x\vert z)] \stackrel{\textit{Le
 $\nabla_\phi \mathbb{E}_{q_\phi}[L(x,z)] =  \mathbb{E}_{q_\phi}[L(x,z)\nabla_\phi q_\phi(z\vert x)]$, (reinforcement trick) but high variance! $\rightarrow$ reparam.\\
 $\nabla_\phi \mathbb{E}_{q_\phi}[L(x,z)] =  \mathbb{E}_{\epsilon}[\nabla_\phi L(x, g_\phi(\epsilon))]$ estimated via MC sampling \\
 $z\sim \mathcal{N}(\mu, C),\, \nabla_\mu \mathbb{E}[f(z)] = \mathbb{E}[\nabla_z f(z)]$, (Bonnet)\\
-$\nabla_\U \mathbb{E}[f(z)] = \mathbb{E}_\epsilon[\epsilon^\top g], g := \nabla_\xi f(\xi) \vert_{\xi + U\epsilon + \mu} $
+$\nabla_U \mathbb{E}[f(z)] = \mathbb{E}_\epsilon[\epsilon^\top g], g := \nabla_\xi f(\xi) \vert_{\xi + U\epsilon + \mu} $
 
 \subsection*{GANs}
 Baye's optimal classifier: $q_\theta(x) = p / (p + p_\theta)$ 
