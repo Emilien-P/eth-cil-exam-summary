@@ -14,7 +14,7 @@ $
 $
 \subsection*{GloVe (Weighted Square Loss)}
 \textbf{Co-occurence Matrix:}\\
-$\mathbf{N} = (n_{ij}) \in \mathbb{R}^{|V|\times|C|} = \# of word w_i$ in context $w_j$\\
+$\mathbf{N} = (n_{ij}) \in \mathbb{R}^{|V|\times|C|} = \text{\# of word w_i}$ in context $w_j$\\
 $\mathbf{N}$ easily computed (one data pass) and sparse\\
 \textbf{Objective:} $H(\theta;\mathbf{N})$\\
 $= \sum_{n_{ij} > 0} f(n_{ij})(\log n_{ij} - \log \exp[\langle \mathbf{x}_i, \mathbf{y}_j \rangle + b_i + d_j])^2$\\
